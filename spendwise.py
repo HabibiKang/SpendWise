@@ -54,7 +54,7 @@ def calculate():
         make_dict[income_names[i]] = income_amounts[i]
     for i in range(len(expense_names)):
         make_dict[expense_names[i]] = expense_amounts[i]
-
+    
     y = income_amounts + expense_amounts
     mylabels = income_names + expense_names
 
