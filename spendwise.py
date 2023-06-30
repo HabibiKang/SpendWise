@@ -58,8 +58,16 @@ def calculate():
     y = income_amounts + expense_amounts
     mylabels = income_names + expense_names
 
-    plt.pie(y, labels=mylabels, colors=["green", "red"])
-    plt.legend(title="Budget Ratio", labels=make_dict.items(), loc="lower left", bbox_to_anchor=(-0.4, -0.17))
+    total_income = sum(income_amounts)
+    total_expenses = sum(expense_amounts)
+    ratio = total_income - total_expenses
+
+    colors = ['green'] * len(income_amounts) + ['red'] * len(expense_amounts)
+
+    plt.pie(y, labels=mylabels, colors=colors, wedgeprops={'edgecolor': 'black', 'linewidth': 1})
+    plt.legend(title="Budget Ratio", labels=make_dict.items(), loc="lower left", bbox_to_anchor=(-0.4, -0.15))
+    text_content = f"This June, you earned ${total_income}\nand spent ${total_expenses} this month.\nYour budget ratio is ${ratio}."
+    plt.text(1.5, -1.6, text_content, fontsize=12, color='black', ha='right', va='bottom', bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'))
     plt.show()
 
 if __name__ == "__main__":
